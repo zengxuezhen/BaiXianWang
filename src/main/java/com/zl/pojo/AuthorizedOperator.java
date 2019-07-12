@@ -1,7 +1,13 @@
 package com.zl.pojo;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 /**
  * 授权运营者信息表
  * */
+@Component
+@Scope("prototype")
 public class AuthorizedOperator {
 	private Integer id;                  //主键ID，自增
 	private String operatorNo;           //授权运营编号
