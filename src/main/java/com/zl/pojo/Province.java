@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 省表
  * */
 public class Province {
-	private Integer id;//主键ID，自增
+	private Integer id;//主键ID， 自增
 	private String provinceNo;//省
 	private String provinceName;//省名
 	public Integer getId() {

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * */
 public class District {
 	private Integer id;//主键ID，自增
-	private String districtNo;//区
+	private String districtNo;   //区
 	private String districtName;//区名
 	private Integer cityId;//外键，用来连接市表主键ID
 	public Integer getId() {

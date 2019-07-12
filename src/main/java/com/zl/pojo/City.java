@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * 市表
  * */
 public class City {
-	private Integer id;//主键ID，自增
+	private Integer id; //主键ID，自增
 	private String cityNo;//市
 	private String cityName;//市名
 	private Integer provinceId;//外键，用来连接省表主键ID
