@@ -8,6 +8,22 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class ResourceItem {
+	/**
+	 *  主键ID，自增
+		资源物品单编号
+		资源物品三级分类表ID
+		资源物品名称
+		资源物品产地
+		资源物品规格型号
+		资源物品数量(单位，千克)
+		资源物品单价
+		资源物品货币
+		资源物品仓库
+		0期货，1现货
+		资源物品备注
+		资源单ID 外键，连接资源单
+
+	 */
 private	int id;
 private	int productNo;
 private	int thirdClassId;
@@ -21,7 +37,10 @@ private	String warehouse;
 private	String futureSpot;
 private	String description;
 private	int resourceId;
-private List<ClassThree> lassThree;
+/**
+ * 查询ResourceItem的时候可以让mybatis级联给我查询他对应的所有的ClassThree
+ */
+private List<ClassThree> ClassThree;
 public int getId() {
 	return id;
 }
@@ -100,12 +119,13 @@ public int getResourceId() {
 public void setResourceId(int resourceId) {
 	this.resourceId = resourceId;
 }
-public List<ClassTwo> getClassTwo() {
-	return classTwo;
+public List<ClassThree> getClassThree() {
+	return ClassThree;
 }
-public void setClassTwo(List<ClassTwo> classTwo) {
-	this.classTwo = classTwo;
+public void setClassThree(List<ClassThree> classThree) {
+	ClassThree = classThree;
 }
+
 
 
 }
