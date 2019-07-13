@@ -1,5 +1,7 @@
 package com.zl.pojo;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,7 @@ private	String warehouse;
 private	String futureSpot;
 private	String description;
 private	int resourceId;
+private List<ClassThree> lassThree;
 public int getId() {
 	return id;
 }
@@ -96,6 +99,12 @@ public int getResourceId() {
 }
 public void setResourceId(int resourceId) {
 	this.resourceId = resourceId;
+}
+public List<ClassTwo> getClassTwo() {
+	return classTwo;
+}
+public void setClassTwo(List<ClassTwo> classTwo) {
+	this.classTwo = classTwo;
 }
 
 
