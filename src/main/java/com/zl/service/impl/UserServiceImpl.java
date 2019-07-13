@@ -5,15 +5,19 @@ import org.springframework.stereotype.Service;
 
 import com.zl.dao.UserDao;
 import com.zl.pojo.User;
-import com.zl.service.LoginService;
+import com.zl.service.UserService;
 @Service
-public class LoginServiceImpl implements LoginService{
+public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao ud;
 	@Override
 	public User login(User user) {
 		return ud.login(user);
 		
+	}
+	@Override
+	public int register(User user) {
+		return ud.register(user);
 	}
 	
 }

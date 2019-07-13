@@ -2,6 +2,7 @@ package com.zl.service;
 
 import com.zl.pojo.User;
 
-public interface LoginService {
-	public User login(User user);
+public interface UserService {
+	User login(User user);
+	int register(User user);
 }
