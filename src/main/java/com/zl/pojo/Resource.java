@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("prototype")
-public class resource{
+public class Resource{
 private int	id;
 private int	listNo;
 private int	 userId;
 private String	phoneNo;
 private String	description;
 private Date	submissionDate;
+private ResourceItem resourceitem;
 public int getId() {
 	return id;
 }
@@ -49,6 +50,12 @@ public Date getSubmissionDate() {
 }
 public void setSubmissionDate(Date submissionDate) {
 	this.submissionDate = submissionDate;
+}
+public ResourceItem getResourceitem() {
+	return resourceitem;
+}
+public void setResourceitem(ResourceItem resourceitem) {
+	this.resourceitem = resourceitem;
 }
 
 }
