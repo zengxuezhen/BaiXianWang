@@ -2,11 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zl.dao.UserDao">
-	<insert id="addBook" parameterType="book" >
-		insert into t_user (id,user_no userNo,password,phone_no phoneNo,nick_name nickName,avatar,email,region,province_id provinceId,city_id cityId,district_id districtId,role,company_or_self_employed companyOrSelfEmployed,register_date registerDate)
-	 		values (#{id},#{bookName},#{bookClass.bookClassId},#{bookAuthor},#{bookPubDate},#{bookPress},#{bookInventory})
+	<!-- 注册 -->
+	<insert id="register" parameterType="user" >
+		insert into t_user (user_no,user_name,password,phone_no,nick_name,avatar,email,region,province_id,city_id,district_id,role,company_or_self_employed,register_date)
+	 		values (#{userNo},#{userName},#{password},#{phoneNo},#{nickName},#{avatar},#{email},#{region},#{provinceId},#{cityId},#{districtId},#{role},#{companyOrSelfEmployed},#{registerDate})
 	</insert>
+	<!-- 登录 ，根据userName查询用户-->
 	<select id="login" parameterType="user" resultType="user">
-		select * from t_user where name=#{name} and password=#{password}
+		select id,user_no userNo,password,phone_no phoneNo,nick_name nickName,avatar,email,region,province_id provinceId,city_id cityId,district_id districtId,role,company_or_self_employed companyOrSelfEmployed,register_date registerDate
+			from t_user where user_name=#{userName} and password=#{password}
 	</select>
+	<!-- 根据ID查询用户信息 -->
+	<select id="queryUserById" parameterType="int" resultType="user">
+		select id,user_no userNo,password,phone_no phoneNo,nick_name nickName,avatar,email,region,province_id provinceId,city_id cityId,district_id districtId,role,company_or_self_employed companyOrSelfEmployed,register_date registerDate
+			from t_user where id=#{id}
+	</select>
+	<!-- 根据ID修改用户信息 -->
+	<update id="updateUser" parameterType="user">
+		update t_user set nick_name=#{nickName},avatar=#{avatar},phone_no=#{phoneNo},region=#{region},province_id=#{provinceId},city_id=#{cityId} where id=#{id}
+	</update>
+	<!-- 添加银行信息 -->
+	<insert id="addAccount" parameterType="bankAccount" >
+		insert into bank_account (user_id userId,account_name accountName,branch,account_no accountNo)
+	 		values (#{userId},#{accountName},#{branch},#{accountNo})
+	</insert>
 </mapper>

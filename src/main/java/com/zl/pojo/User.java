@@ -9,22 +9,22 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class User {
-	private Integer id;
-	private Integer userNo;
-	private String userName;
-	private String password;
-	private String phoneNo;
-	private String nickName;
-	private String avatar;
-	private String email;
-	private String region;
-	private Integer provinceId;
-	private Integer cityId;
-	private Integer districtId;
-	private String role;
-	private String companyOrSelfEmployed;
+	private Integer id;//用户表ID
+	private Integer userNo;//用户编号
+	private String userName;//用户名
+	private String password;//密码
+	private String phoneNo;//手机号
+	private String nickName;//昵称
+	private String avatar;//头像地址
+	private String email;//email地址
+	private String region;//地区
+	private Integer provinceId;//省ID
+	private Integer cityId;//市ID
+	private Integer districtId;//区ID
+	private String role;//角色，用来标识用户，普通用户0，采购1，供应2
+	private String companyOrSelfEmployed;//用来表示用户是个人还是企业，1个人2企业
 	@DateTimeFormat(pattern="yyyy-MM-dd  HH:mm:ss")
-	private Date registerDate;
+	private Date registerDate;//注册日期时间
 	public Integer getId() {
 		return id;
 	}
