@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zl.dao.UpgradeSelfPurchaseDao">
+	<resultMap type="self" id="Self">
+		<id column="id" property="id"/>
+		<id column="identify_no" property="identifyNo"/>
+		<id column="real_name" property="realName"/>
+		<id column="ID_no" property="idNo"/>
+		<id column="ID_photo" property="idPhoto"/>
+		<id column="province_id" property="provinceId"/>
+		<id column="city_id" property="cityId"/>
+		<id column="district_id" property="districtId"/>
+		<id column="mobile_no" property="mobileNo"/>
+		<id column="email" property="email"/>
+		<id column="Phone_no" property="phoneNo"/>
+		<id column="submission_date" property="submissionDate"/>
+		<id column="state" property="state"/>
+		<id column="userID" property="userId"/>
+	</resultMap>
+	<select id="selectSelf" parameterType="int" resultMap="Self" >
+			select *from self_employed_identify where userID = #{userId}
+	</select>
+	
+	
+	<insert id="addSelf" parameterType="self" >
+			insert into self_employed_identify(id,identify_no,real_name,ID_no,ID_photo,province_id,city_id,district_id,mobile_no,email,Phone_no,submission_date,state,userID) values(#{id},#{identifyNo},#{realName},#{idNo},#{idPhoto},#{provinceId},#{cityId},#{districtId},#{mobileNo},#{email},#{phoneNo},#{submissionDate},1,#{userId})
+	</insert>
+</mapper>

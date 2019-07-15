@@ -10,9 +10,14 @@
 	<typeAliases>
 		<typeAlias type="com.zl.pojo.User" alias="user"/>
 		<typeAlias type="com.zl.pojo.BankAccount" alias="bankAccount"/>
+		<typeAlias type="com.zl.pojo.SelfEmployedIdentify" alias="self"/>
+		<typeAlias type="com.zl.pojo.CompanyInfo" alias="company"/>
+		<typeAlias type="com.zl.pojo.AuthorizedOperator" alias="author"/>
 	</typeAliases>
 	<!-- 引用mapper映射文件 -->
 	<mappers>
 		<mapper resource="com/zl/dao/UserDaoMapper.xml"/>
+		<mapper resource="com/zl/dao/UpgradeSelfPurchaseDaoMapper.xml"/>
+		<mapper resource="com/zl/dao/UpgradeCompanyPurchaseDaoMapper.xml"/>
 	</mappers>
 </configuration>
