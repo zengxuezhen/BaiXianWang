@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zl.dao.AddressDao">
+	<resultMap type="province" id="provinceInfo">
+		<id column="id" property="id"/>
+		<result column="province_No" property="provinceNo"/>
+		<result column="province_name" property="provinceName"/>
+	</resultMap>
+	
+	<select id="selectProvince"  resultMap="provinceInfo" >
+			select *from province
+	</select>
+	
+	<resultMap type="city" id="cityInfo">
+		<id column="id" property="id"/>
+		<result column="city_No" property="cityNo"/>
+		<result column="City_name" property="cityName"/>
+		<result column="Province_id" property="provinceId"/>
+	</resultMap>
+	<select id="selectCity" parameterType="int" resultMap="cityInfo" >
+			select *from city where Province_id =#{id}
+	</select>
+	
+	<resultMap type="district" id="districtInfo">
+		<id column="id" property="id"/>
+		<result column="district_No" property="districtNo"/>
+		<result column="District_Name" property="districtName"/>
+		<result column="city_id" property="cityId"/>
+	</resultMap>
+	<select id="selectDistrict"  parameterType="int" resultMap="districtInfo" >
+			select *from district where city_id = #{id}
+	</select>
+	
+</mapper>

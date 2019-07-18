@@ -1,0 +1,23 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zl.dao.ResourceDao">
+	<insert id="addResource" parameterType="resource" >
+		INSERT INTO resource (
+		list_no,company_id,
+		phone_no,description,submission_date)
+		VALUES
+		(#{listNo},#{companyId},#{phoneNo},#{description},#{submissionDate})
+	</insert>
+	<select id="queryResourcebyid" parameterType="Date" resultType="int">
+	select id from resource where submission_date=#{submissionDate}
+	</select>
+	<select id="queryResource" parameterType="int" resultType="resource">
+		select id,
+		List_no listNo,
+		company_id companyId,
+		phone_no phoneNo,
+		description,
+		submission_date submissionDate
+		 from resource where company_id=#{id}
+	</select>
+</mapper>
