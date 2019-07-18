@@ -14,6 +14,7 @@
 		<id column="district_id" property="districtId"/>
 		<id column="mobile_no" property="mobileNo"/>
 		<id column="email" property="email"/>
+		<id column="District_Phone_no" property="DistrictPhoneNo"/>
 		<id column="Phone_no" property="phoneNo"/>
 		<id column="submission_date" property="submissionDate"/>
 		<id column="state" property="state"/>
@@ -25,6 +26,6 @@
 	
 	
 	<insert id="addSelf" parameterType="self" >
-			insert into self_employed_identify(id,identify_no,real_name,ID_no,ID_photo,province_id,city_id,district_id,mobile_no,email,Phone_no,submission_date,state,userID) values(#{id},#{identifyNo},#{realName},#{idNo},#{idPhoto},#{provinceId},#{cityId},#{districtId},#{mobileNo},#{email},#{phoneNo},#{submissionDate},1,#{userId})
+			insert into self_employed_identify(id,identify_no,real_name,ID_no,ID_photo,province_id,city_id,district_id,mobile_no,email,District_Phone_no,Phone_no,submission_date,state,userID) values(#{id},#{identifyNo},#{realName},#{idNo},#{idPhoto},#{provinceId},#{cityId},#{districtId},#{mobileNo},#{email},#{DistrictPhoneNo},#{phoneNo},#{submissionDate},1,#{userId})
 	</insert>
 </mapper>

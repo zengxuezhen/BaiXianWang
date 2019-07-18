@@ -11,11 +11,15 @@
 		<typeAlias type="com.zl.pojo.SelfEmployedIdentify" alias="self"/>
 		<typeAlias type="com.zl.pojo.CompanyInfo" alias="company"/>
 		<typeAlias type="com.zl.pojo.AuthorizedOperator" alias="author"/>
+		<typeAlias type="com.zl.pojo.Province" alias="province"/>
+		<typeAlias type="com.zl.pojo.City" alias="city"/>
+		<typeAlias type="com.zl.pojo.District" alias="district"/>
 		
 	</typeAliases>
 	<!-- 引用mapper映射文件 -->
 	<mappers>
 		<mapper resource="com/zl/dao/UpgradeSelfPurchaseDaoMapper.xml"/>
 		<mapper resource="com/zl/dao/UpgradeCompanyPurchaseDaoMapper.xml"/>
+		<mapper resource="com/zl/dao/AddressDaoMapper.xml"/>
 	</mappers>
 </configuration>

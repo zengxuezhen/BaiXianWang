@@ -9,4 +9,4 @@
 	<select id="login" parameterType="user" resultType="user">
 		select * from t_user where name=#{name} and password=#{password}
 	</select>
-</mapper>
+</mapper> 
