@@ -1,0 +1,50 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zl.dao.ResourceListDao">
+<select id="queryAllResourceList" parameterType="fy" resultType="resourceList">
+	SELECT c.company_Name companyName,
+	two.second_class_name secondClassName,
+	three.third_class_name thirdClassName,
+	r.description description,
+	r.submission_date submissionDate
+	from  
+	company_info c, resource r , resource_item i,
+	class_three three,class_two two,class_one one
+	<where>
+	c.id=r.company_id AND r.id=i.resource_id
+	AND i.third_class_id=three.id and three.second_class_id =two.id
+	AND two.second_class_id=one.id 
+	<if test="query!=null">
+		<if test="query.qUserid!=null and query.qUserid!=''">
+		and r.company_id = #{query.qUserid}
+		</if>
+ 		<if test="query.qClassone!=null and query.qClassone!=''">
+ 		 and one.first_class_no =#{query.qClassone}
+ 		</if>
+ 		<if test="query.qproductName!=null and query.qproductName!=''">
+ 		and i.product_name like concat('%',concat(#{query.qproductName},'%'))
+ 		</if>
+ 		<if test="query.qorigin!=null and query.qorigin!=''">
+ 		and i.origin like concat('%',concat(#{query.qorigin},'%'))
+ 		</if>
+ 		<if test="query.qcompanyName!=null and query.qcompanyName!=''">
+ 	  	and  c.company_Name like concat('%',concat(#{query.qcompanyName},'%'))
+ 		</if>
+ 	</if>
+ </where> 	
+ 	limit #{page},#{rows}
+</select> 
+
+
+
+<select id="queryRowCount" resultType="int">
+	SELECT COUNT(*)
+	from  
+	company_info c, resource r , resource_item i,
+	class_three three,class_two two,class_one one
+	where 
+	c.id=r.company_id AND r.id=i.resource_id
+	AND i.third_class_id=three.id and three.second_class_id =two.id
+	AND two.second_class_id=one.id 
+</select>
+</mapper>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zl.dao.PurchaseOrderDao">
+
+<resultMap type="com.zl.pojo.PurchaseOrder" id="PurchaseOrderId">
+<id column="id" property="id"/>
+<result column="purchase_order_no" property="purchaseOrderNo"/>
+<result column="user_id"   property="userId"/>
+<result column="purchase_order_name"   property="purchaseOrderName"/>
+<result column="product_name"   property="productName"/>
+<result column="origin"   property="origin"/>
+<result column="specification"   property="specification"/>
+<result column="level"   property="level"/>
+<result column="warehouse"   property="warehouse"/>
+<result column="future_spot"   property="futureSpot"/>
+<result column="price"   property="price"/>
+<result column="purchase_description"   property="purchaseDescription"/>
+<result column="payment_method"   property="paymentMethod"/>
+<result column="invoice_type"   property="invoiceType"/>
+<result column="province_id"   property="provinceId"/>
+<result column="city_id"   property="cityId"/>
+<result column="district_id"   property="districtId"/>
+<result column="deadline"   property="deadline"/>
+<result column="contact"   property="contact"/>
+<result column="phone"   property="phone"/>
+<result column="state"   property="state"/>
+<result column="submission_date"   property="submissionDate"/>
+
+
+</resultMap>
+
+<!-- 采购单分页查询 -->
+	<select id="queryPurchaseByFy" parameterType="com.zl.pojo.FenYePurchase"
+		resultMap="PurchaseOrderId">
+		select * from purchase_order
+		<if test="queryPurchase!=null">
+			<where>
+				<if test="queryPurchase.title!=null and queryPurchase.title!=''">
+					 purchase_order_name like
+					concat('%',concat(#{queryPurchase.title},'%'))
+				</if>
+				<if test="queryPurchase.product!=null and queryPurchase.product!=''">
+					and product_name like concat('%',concat(#{queryPurchase.product},'%'))
+				</if>
+				<if test="queryPurchase.startUploadTime!=null">
+					and submission_date >#{queryPurchase.startUploadTime}
+				</if>
+				<if test="queryPurchase.endUploadTime!=null">
+					and submission_date <![CDATA[<]]>#{queryPurchase.endUploadTime}
+				</if>
+				
+			</where>
+		</if>
+		LIMIT #{starRow},#{rows}
+	</select>
+<!-- 查询总记录数 -->
+<select id="queryPurchaseRowCount" parameterType="com.zl.pojo.QueryPurchase" resultType="int">
+	select count(*) from purchase_order
+	<where>
+				<if test="title!=null and title!=''">
+					purchase_order_name like
+					concat('%',concat(#{title},'%'))
+				</if>
+				<if test="product!=null and product!=''">
+					and product_name like concat('%',concat(#{product},'%'))
+				</if>
+				<if test="startUploadTime!=null">
+					and submission_date >#{startUploadTime}
+				</if>
+				<if test="endUploadTime!=null">
+					and submission_date <![CDATA[<]]>#{endUploadTime}
+				</if>
+				
+			</where>
+	</select>
+<!-- 添加采购单 -->
+<insert id="addPurchaseOrder" parameterType="com.zl.pojo.PurchaseOrder">
+		insert into Purchase_order(purchase_orderName,product_name,origin,specification,level,warehouse,future_spot,price,purchase_description,payment_method,invoiceType,province_id,city_id,district_id,deadline,contact,phone)
+		values(#{purchaseOrderName},#{productName},#{origin},#{specification},#{level},#{warehouse},#{warehouse},#{futureSpot},#{purchaseDescription},#{paymentMethod},#{invoiceType},#{provinceId},#{cityId},#{districtId},#{deadline},#{contact},#{phone})
+
+	</insert>
+
+<!-- 根据ID查询采购单详情 -->
+
+<select id="queryPurchaseOrderById" parameterType="int" resultMap="PurchaseOrderId">
+select * from Purchase_order where id=#{id}
+</select>
+
+</mapper>
