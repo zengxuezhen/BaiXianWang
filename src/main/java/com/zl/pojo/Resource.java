@@ -3,7 +3,10 @@ package com.zl.pojo;
 import java.util.Date;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Component
 @Scope("prototype")
@@ -19,9 +22,11 @@ public class Resource{
 	 */
 private int	id;
 private int	listNo;
-private int	 userId;
+private int	 companyId;
 private String	phoneNo;
 private String	description;
+@DateTimeFormat(pattern="yyyy-MM-dd")
+@JsonFormat(pattern="yyyy-MM-dd",timezone="GTM+8")
 private Date	submissionDate;
 /**
  * 查询Resource的时候可以让mybatis级联给我查询他对应的所有的ResourceItem
@@ -39,11 +44,12 @@ public int getListNo() {
 public void setListNo(int listNo) {
 	this.listNo = listNo;
 }
-public int getUserId() {
-	return userId;
+
+public int getCompanyId() {
+	return companyId;
 }
-public void setUserId(int userId) {
-	this.userId = userId;
+public void setCompanyId(int companyId) {
+	this.companyId = companyId;
 }
 public String getPhoneNo() {
 	return phoneNo;

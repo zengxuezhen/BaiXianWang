@@ -22,21 +22,21 @@ public class ResourceItem {
 		0期货，1现货
 		资源物品备注
 		资源单ID 外键，连接资源单
-
 	 */
 private	int id;
 private	int productNo;
 private	int thirdClassId;
-private	int productName;
+private	String productName;
 private	String origin;
 private	String specifications;
-private	String quantity;
+private	int quantity;
 private	double price;
 private	String currency;
 private	String warehouse;
 private	String futureSpot;
-private	String description;
+private	String itemDescription;
 private	int resourceId;
+private String rank;
 /**
  * 查询ResourceItem的时候可以让mybatis级联给我查询他对应的所有的ClassThree
  */
@@ -59,17 +59,12 @@ public int getThirdClassId() {
 public void setThirdClassId(int thirdClassId) {
 	this.thirdClassId = thirdClassId;
 }
-public int getProductName() {
+
+public String getProductName() {
 	return productName;
 }
-public void setProductName(int productName) {
+public void setProductName(String productName) {
 	this.productName = productName;
-}
-public String getOrigin() {
-	return origin;
-}
-public void setOrigin(String origin) {
-	this.origin = origin;
 }
 public String getSpecifications() {
 	return specifications;
@@ -77,10 +72,11 @@ public String getSpecifications() {
 public void setSpecifications(String specifications) {
 	this.specifications = specifications;
 }
-public String getQuantity() {
+
+public int getQuantity() {
 	return quantity;
 }
-public void setQuantity(String quantity) {
+public void setQuantity(int quantity) {
 	this.quantity = quantity;
 }
 public double getPrice() {
@@ -107,11 +103,11 @@ public String getFutureSpot() {
 public void setFutureSpot(String futureSpot) {
 	this.futureSpot = futureSpot;
 }
-public String getDescription() {
-	return description;
+public String getItemDescription() {
+	return itemDescription;
 }
-public void setDescription(String description) {
-	this.description = description;
+public void setItemDescription(String itemDescription) {
+	this.itemDescription = itemDescription;
 }
 public int getResourceId() {
 	return resourceId;
@@ -124,6 +120,26 @@ public List<ClassThree> getClassThree() {
 }
 public void setClassThree(List<ClassThree> classThree) {
 	ClassThree = classThree;
+}
+public String getOrigin() {
+	return origin;
+}
+public void setOrigin(String origin) {
+	this.origin = origin;
+}
+public String getRank() {
+	return rank;
+}
+public void setRank(String rank) {
+	this.rank = rank;
+}
+@Override
+public String toString() {
+	return "ResourceItem [id=" + id + ", productNo=" + productNo + ", thirdClassId=" + thirdClassId + ", productName="
+			+ productName + ", origin=" + origin + ", specifications=" + specifications + ", quantity=" + quantity
+			+ ", price=" + price + ", currency=" + currency + ", warehouse=" + warehouse + ", futureSpot=" + futureSpot
+			+ ", itemDescription=" + itemDescription + ", resourceId=" + resourceId + ", rank=" + rank + ", ClassThree="
+			+ ClassThree + "]";
 }
 
 

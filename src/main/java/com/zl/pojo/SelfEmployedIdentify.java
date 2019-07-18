@@ -22,11 +22,18 @@ public class SelfEmployedIdentify {
 	private Integer districtId;      //区ID，外键，连接区表
 	private String mobileNo;     //手机号码
 	private String email;       //电子邮箱
-	private String phoneNo;      //单位座机
+	private String DistrictPhoneNo; //单位座机区号
+	private String  phoneNo;//单位座机
 	@DateTimeFormat(pattern="yyyy-MM-dd HH-mm-ss")
 	private Date submissionDate;      //上传日期
 	private Integer state ;        //状态  0未通过 1待审核 2通过
 	private Integer userId;      //用户id 外键连接User表
+	public String getDistrictPhoneNo() {
+		return DistrictPhoneNo;
+	}
+	public void setDistrictPhoneNo(String districtPhoneNo) {
+		DistrictPhoneNo = districtPhoneNo;
+	}
 	public Integer getId() {
 		return id;
 	}

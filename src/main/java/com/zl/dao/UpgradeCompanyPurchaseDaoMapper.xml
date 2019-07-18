@@ -26,7 +26,7 @@
 		
 	</resultMap>
 	<select id="selectCompany" parameterType="int" resultMap="CompanyInfo" >
-			select *from company_info where userID = #{userId}
+			select *from company_info where user_ID = #{userId}
 	</select>
 	
 	

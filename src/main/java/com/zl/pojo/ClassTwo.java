@@ -2,6 +2,10 @@ package com.zl.pojo;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+@Component
+@Scope("prototype")
 public class ClassTwo {
 private int	id;
 private int	secondClassNo;

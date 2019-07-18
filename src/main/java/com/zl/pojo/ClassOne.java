@@ -1,5 +1,10 @@
 package com.zl.pojo;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class ClassOne {
 private int	id;
 private int	firstClassId;
