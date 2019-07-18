@@ -8,16 +8,22 @@
 	</settings>
 	<!-- 给实体类起别名 -->
 	<typeAliases>
+		<typeAlias type="com.zl.pojo.User" alias="user"/>
+		<typeAlias type="com.zl.pojo.BankAccount" alias="bankAccount"/>
 		<typeAlias type="com.zl.pojo.SelfEmployedIdentify" alias="self"/>
 		<typeAlias type="com.zl.pojo.CompanyInfo" alias="company"/>
 		<typeAlias type="com.zl.pojo.AuthorizedOperator" alias="author"/>
+<<<<<<< HEAD
 		<typeAlias type="com.zl.pojo.Province" alias="province"/>
 		<typeAlias type="com.zl.pojo.City" alias="city"/>
 		<typeAlias type="com.zl.pojo.District" alias="district"/>
 		
+=======
+>>>>>>> branch 'master' of https://github.com/zengxuezhen/BaiXianWang
 	</typeAliases>
 	<!-- 引用mapper映射文件 -->
 	<mappers>
+		<mapper resource="com/zl/dao/UserDaoMapper.xml"/>
 		<mapper resource="com/zl/dao/UpgradeSelfPurchaseDaoMapper.xml"/>
 		<mapper resource="com/zl/dao/UpgradeCompanyPurchaseDaoMapper.xml"/>
 		<mapper resource="com/zl/dao/AddressDaoMapper.xml"/>
